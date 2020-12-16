@@ -1,35 +1,40 @@
-create table qr_base
+CREATE table qr_base
 (
     qr_id    varchar(60)
         constraint qr_base_qr_id_key
             unique,
     time_log timestamp,
-    status   varchar(10) default 0
+    status   boolean default False
 );
 
-CREATE TABLE IF NOT EXISTS QR_MAP(
-    Qr_id varchar(60) REFERENCES qr_base(qr_id),
-    Product_id varchar REFERENCES products(product_id),
-    Distributor_id varchar REFERENCES distributors(distributor_id),
-    Retailer_id varchar REFERENCES retailers(retailer_id) default null,
-    Consumer_id varchar REFERENCES consumers(consumer_id) default null,
-    Last_Updated timestamp default now()
+
+CREATE TABLE IF NOT EXISTS QR_MAP
+(
+    Qr_id          varchar(60) REFERENCES qr_base (qr_id),
+    Product_id     varchar REFERENCES products (product_id),
+    Distributor_id varchar REFERENCES distributors (distributor_id),
+    Retailer_id    varchar REFERENCES retailers (retailer_id) default null,
+    Consumer_id    varchar REFERENCES consumers (consumer_id) default null,
+    Last_Updated   timestamp                                  default now()
 );
 
 
 CREATE OR REPLACE FUNCTION qrcode_generator(count integer)
-returns integer
-LANGUAGE 'plpgsql'
-as $body$
+    returns integer
+    LANGUAGE 'plpgsql'
+as
+$body$
 declare
 BEGIN
-   FOR i IN 1..count LOOP
-    insert into qr_base (qr_id, time_log) values (substr(md5(random()::text), 0, 60) , CURRENT_TIMESTAMP)
-      LIMIT  15000;
-   END LOOP;
-return (select count(*) from qr_base);
-    end;
-    $body$;
+    FOR i IN 1..count
+        LOOP
+            insert into qr_base (qr_id, time_log)
+            values (substr(md5(random()::text), 0, 60), CURRENT_TIMESTAMP)
+            LIMIT 15000;
+        END LOOP;
+    return (select count(*) from qr_base);
+end;
+$body$;
 
 
 /* select qrcode_generator(10000);
@@ -38,14 +43,15 @@ return (select count(*) from qr_base);
 
 
 CREATE OR REPLACE FUNCTION qr_valid(qr_code varchar)
-returns bool as $qr_base$
-    declare
+    returns bool as
+$qr_base$
+declare
     qr_base varchar;
-    begin
+begin
     select into qr_base(exists(select count(*) from qr_base where qr_id = qr_code));
     return qr_base;
-    end;
-    $qr_base$ LANGUAGE 'plpgsql';
+end;
+$qr_base$ LANGUAGE 'plpgsql';
 
 
 /*

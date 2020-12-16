@@ -7,6 +7,7 @@ User_Name varchar unique,
 Email_Id varchar unique,
 User_Password varchar,
 recovery_question varchar,
+recovery_answer varchar,
 User_Type int,
 Created_At timestamp default now()
 );
