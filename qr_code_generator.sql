@@ -1,10 +1,10 @@
-CREATE table qr_base
+CREATE TABLE IF NOT EXISTS QR_BASE
 (
-    qr_id    varchar(60)
-        constraint qr_base_qr_id_key
-            unique,
-    time_log timestamp,
-    status   boolean default False
+    QR_ID    VARCHAR(60)
+        CONSTRAINT QR_BASE_QR_ID_KEY
+            UNIQUE,
+    TIME_LOG TIMESTAMP,
+    STATUS   BOOLEAN DEFAULT FALSE
 );
 
 
