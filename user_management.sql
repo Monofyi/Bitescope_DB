@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS user_management
     User_Password     varchar,
     recovery_question varchar,
     recovery_answer   varchar,
-    User_Type         int,
+    User_Type         varchar default 'User',
     Created_At        timestamp default now()
 );
 
@@ -25,3 +25,7 @@ CREATE TABLE IF NOT EXISTS god_view
     Duration       timestamp,
     Last_Active    timestamp default now()
 );
+
+/*
+INSERT INTO user_management(User_Name, Email_Id, User_Password, recovery_question, recovery_answer, User_Type) values ('admin','admin','admin','test','test','Admin')
+ */
