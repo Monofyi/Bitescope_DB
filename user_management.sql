@@ -3,12 +3,10 @@ drop table user_management;
 
 CREATE TABLE IF NOT EXISTS user_management (
 User_Id serial8 PRIMARY KEY,
-First_Name varchar,
-Last_Name varchar,
-User_Name varchar unique ,
+User_Name varchar unique,
+Email_Id varchar unique,
 User_Password varchar,
-Phone_Number integer unique,
-Email_ID varchar unique,
+recovery_question varchar,
 User_Type int,
 Created_At timestamp default now()
 );

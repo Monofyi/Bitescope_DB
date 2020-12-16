@@ -1,3 +1,22 @@
+create table qr_base
+(
+    qr_id    varchar(60)
+        constraint qr_base_qr_id_key
+            unique,
+    time_log timestamp,
+    status   varchar(10) default 0
+);
+
+CREATE TABLE IF NOT EXISTS QR_MAP(
+    Qr_id varchar(60) REFERENCES qr_base(qr_id),
+    Product_id varchar REFERENCES products(product_id),
+    Distributor_id varchar REFERENCES distributors(distributor_id),
+    Retailer_id varchar REFERENCES retailers(retailer_id) default null,
+    Consumer_id varchar REFERENCES consumers(consumer_id) default null,
+    Last_Updated timestamp default now()
+);
+
+
 CREATE OR REPLACE FUNCTION qrcode_generator(count integer)
 returns integer
 LANGUAGE 'plpgsql'
