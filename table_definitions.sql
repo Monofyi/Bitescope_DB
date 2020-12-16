@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Products
     Expired_Date          varchar,
     Manufactured_Location varchar,
     Production_BatchNo    varchar,
-    Veg                   boolean
+    Type                   varchar
 );
 
 
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS Orders
     Product_ID  varchar REFERENCES Products (Product_ID),
     Retailer_ID varchar REFERENCES Retailers (Retailer_ID),
     Consumer_ID varchar REFERENCES Consumers (Consumer_ID),
-    Quantity    integer,
+    Quantity int,
     Total_Price money,
     Timestamp   timestamptz DEFAULT CURRENT_TIMESTAMP
 );
