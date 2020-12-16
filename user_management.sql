@@ -1,0 +1,26 @@
+drop table god_view;
+drop table user_management;
+
+CREATE TABLE IF NOT EXISTS user_management (
+User_Id serial8 PRIMARY KEY,
+First_Name varchar,
+Last_Name varchar,
+User_Name varchar unique ,
+User_Password varchar,
+Phone_Number integer unique,
+Email_ID varchar unique,
+User_Type int,
+Created_At timestamp default now()
+);
+
+
+CREATE TABLE IF NOT EXISTS god_view(
+    User_Id INTEGER REFERENCES user_management(User_Id),
+    User_Name varchar REFERENCES user_management(User_Name),
+    Email_Id varchar REFERENCES user_management(Email_ID),
+    location varchar,
+    IP_Address varchar,
+    Brower_Session varchar,
+    Duration timestamp,
+    Last_Active timestamp default now()
+);
