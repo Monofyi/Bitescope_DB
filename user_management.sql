@@ -1,18 +1,19 @@
 drop table god_view;
 drop table user_management;
 
+
 create table if not exists user_management
 (
     user_id           bigserial    not null primary key,
     f_name            varchar(100) not null,
     l_name            varchar(100) not null,
-    user_name         varchar(100) not null unique ,
+    user_name         varchar(50) not null unique ,
     phone_no          integer      not null unique,
     email_id          varchar(100) not null,
-    user_password     varchar(100) not null,
+    user_password     varchar(500) not null,
     recovery_question varchar(100) not null,
     recovery_answer   varchar(100) not null,
-    user_type         varchar(100) default 1,
+    user_type         integer default 1 ,
     created_at        timestamp default current_timestamp,
     last_login        time default null
 );
@@ -47,20 +48,19 @@ f_ame varchar,
  emailid varchar,
  userpassword varchar,
  recoveryquestion varchar,
- recoveryanswer varchar,
- usertype integer
+ recoveryanswer varchar
 )
 language plpgsql
 as $$
 begin
     insert into user_management(f_name, l_name, user_name, phone_no, email_id, user_password, recovery_question,
-                            recovery_answer, user_type)
-values (f_ame,l_ame,usename,phonno,emailid,userpassword,recoveryquestion,recoveryanswer,usertype);
+                            recovery_answer)
+values (f_ame,l_ame,usename,phonno,emailid,userpassword,recoveryquestion,recoveryanswer);
 commit;
 end;$$
 
 /*
 
-call user_signup_ins('Divakar','R','rex','123','email.com','123','whoami','rex',1);
+call user_signup_ins('Divakar','R','rex','123','email.com','123','whoami','rex');
 
 */
