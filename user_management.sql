@@ -37,3 +37,30 @@ insert into user_management(f_name, l_name, user_name, phone_no, email_id, user_
 ('Divakar','R','rex','123','email.com','123','whoami','rex',1)
 
 */
+
+
+CREATE OR REPLACE PROCEDURE USER_SIGNUP_INS(
+f_ame varchar,
+ l_ame varchar,
+ usename varchar,
+ phonno integer,
+ emailid varchar,
+ userpassword varchar,
+ recoveryquestion varchar,
+ recoveryanswer varchar,
+ usertype integer
+)
+language plpgsql
+as $$
+begin
+    insert into user_management(f_name, l_name, user_name, phone_no, email_id, user_password, recovery_question,
+                            recovery_answer, user_type)
+values (f_ame,l_ame,usename,phonno,emailid,userpassword,recoveryquestion,recoveryanswer,usertype);
+commit;
+end;$$
+
+/*
+
+call user_signup_ins('Divakar','R','rex','123','email.com','123','whoami','rex',1);
+
+*/
