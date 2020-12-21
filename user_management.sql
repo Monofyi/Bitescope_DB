@@ -9,7 +9,7 @@ create table if not exists user_management
     l_name            varchar(100) not null,
     user_name         varchar(50) not null unique ,
     phone_no          integer      not null unique,
-    email_id          varchar(100) not null,
+    email_id          varchar(100) not null unique,
     user_password     varchar(500) not null,
     recovery_question varchar(100) not null,
     recovery_answer   varchar(100) not null,
