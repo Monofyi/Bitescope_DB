@@ -31,13 +31,14 @@ declare
 BEGIN
     FOR i IN 1..count
         LOOP
-            insert into qr_base (qr_id, time_log)
-            values (substr(md5(random()::text), 0, 60), CURRENT_TIMESTAMP)
+            insert into qr_base (QR_ID, qr_timelog, qr_status)
+            values (substr(md5(random()::text), 0, 60), CURRENT_TIMESTAMP, True)
             LIMIT 15000;
         END LOOP;
     return (select count(*) from qr_base);
 end;
 $body$;
+
 
 
 /* select qrcode_generator(10000);
