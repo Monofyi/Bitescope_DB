@@ -46,24 +46,23 @@ $body$;
  */
 
 
-CREATE OR REPLACE FUNCTION qr_valid(qr_code varchar)
-    returns bool as
-$qr_base$
-declare
-    qr_base varchar;
+CREATE OR REPLACE FUNCTION qr_valid(qr_code varchar) RETURNS text AS $$
 begin
-    select into qr_base(exists(select count(*) from qr_base where qr_id = qr_code));
-    return qr_base;
-end;
-$qr_base$ LANGUAGE 'plpgsql';
+    return(select exists(select qr_id from qr_base where qr_id = qr_code));
+end
+$$
+LANGUAGE 'plpgsql';
+
+
+drop function qr_valid;
 
 
 /*
  drop function qr_valid;
 
 
-select qr_valid('2e1cbd4fc0da01d7cf29079696bccaa6');
+select qr_valid('8e905a1c2cc3a0feffea55be723edf8');
 
-
+                         
 select exists(select count(*) from qr_base where qr_id = '2e1cbd4fc0da01d7cf29079696bccaa6');
  */
