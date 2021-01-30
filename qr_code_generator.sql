@@ -41,6 +41,25 @@ $body$;
 
 
 
+CREATE OR REPLACE FUNCTION public.qrcode_generator(count integer)
+ RETURNS integer
+ LANGUAGE plpgsql
+AS $function$
+declare
+BEGIN
+    FOR i IN 1..count
+        LOOP
+            insert into qr_base (QR_ID, qr_timelog, qr_status)
+            values ('btrs1'||(substr(md5(random()::text), 0, 60)||'iuy89'), CURRENT_TIMESTAMP, True)
+            LIMIT 15000;
+        END LOOP;
+    return (select count(*) from qr_base);
+end;
+$function$
+;
+
+
+
 /* select qrcode_generator(10000);
    select * from qr_base;
  */
