@@ -1,0 +1,52 @@
+1,Can add permission,1,add_permission
+2,Can change permission,1,change_permission
+3,Can delete permission,1,delete_permission
+4,Can view permission,1,view_permission
+5,Can add group,2,add_group
+6,Can change group,2,change_group
+7,Can delete group,2,delete_group
+8,Can view group,2,view_group
+9,Can add content type,3,add_contenttype
+10,Can change content type,3,change_contenttype
+11,Can delete content type,3,delete_contenttype
+12,Can view content type,3,view_contenttype
+13,Can add order,4,add_order
+14,Can change order,4,change_order
+15,Can delete order,4,delete_order
+16,Can view order,4,view_order
+17,Can add qrbase,5,add_qrbase
+18,Can change qrbase,5,change_qrbase
+19,Can delete qrbase,5,delete_qrbase
+20,Can view qrbase,5,view_qrbase
+21,Can add sms_validation,6,add_sms_validation
+22,Can change sms_validation,6,change_sms_validation
+23,Can delete sms_validation,6,delete_sms_validation
+24,Can view sms_validation,6,view_sms_validation
+25,Can add user_login_activity,7,add_userloginactivity
+26,Can change user_login_activity,7,change_userloginactivity
+27,Can delete user_login_activity,7,delete_userloginactivity
+28,Can view user_login_activity,7,view_userloginactivity
+29,Can add user_management,8,add_user_management
+30,Can change user_management,8,change_user_management
+31,Can delete user_management,8,delete_user_management
+32,Can view user_management,8,view_user_management
+33,Can add log entry,9,add_logentry
+34,Can change log entry,9,change_logentry
+35,Can delete log entry,9,delete_logentry
+36,Can view log entry,9,view_logentry
+37,Can add session,10,add_session
+38,Can change session,10,change_session
+39,Can delete session,10,delete_session
+40,Can view session,10,view_session
+41,Can add Token,11,add_token
+42,Can change Token,11,change_token
+43,Can delete Token,11,delete_token
+44,Can view Token,11,view_token
+45,Can add token,12,add_tokenproxy
+46,Can change token,12,change_tokenproxy
+47,Can delete token,12,delete_tokenproxy
+48,Can view token,12,view_tokenproxy
+49,Can add Password Reset Token,13,add_resetpasswordtoken
+50,Can change Password Reset Token,13,change_resetpasswordtoken
+51,Can delete Password Reset Token,13,delete_resetpasswordtoken
+52,Can view Password Reset Token,13,view_resetpasswordtoken

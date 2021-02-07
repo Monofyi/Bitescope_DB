@@ -1,0 +1,13 @@
+1,auth,permission
+2,auth,group
+3,contenttypes,contenttype
+4,api,order
+5,api,qrbase
+6,api,sms_validation
+7,api,userloginactivity
+8,api,user_management
+9,admin,logentry
+10,sessions,session
+11,authtoken,token
+12,authtoken,tokenproxy
+13,django_rest_passwordreset,resetpasswordtoken
